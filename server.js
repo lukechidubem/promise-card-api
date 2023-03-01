@@ -14,8 +14,13 @@ const app = require('./app');
 const http = require('http');
 const server = http.createServer(app);
 
+const DB = process.env.DATABASE.replace(
+  '<PASSWORD>',
+  process.env.DATABASE_PASSWORD
+);
+
 mongoose
-  .connect(process.env.DATABASE, {
+  .connect(DB, {
     useNewUrlParser: true,
     // useCreateIndex: true,
     // useFindAndModify: false,
